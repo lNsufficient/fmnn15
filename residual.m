@@ -1,7 +1,7 @@
 function res = residual(f, v, bc0, bc1)
 %res = residual(f, v, bc0, bc1)
 %   Computes the residual using conv. 
-N = lenght(v);
+N = length(v);
 dx2 = (1/(N+1))^2;
 Tdxv = conv(v, [1 -2 1]/dx2,  'same');
 res = Tdxv - f;

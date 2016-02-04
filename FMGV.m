@@ -21,7 +21,7 @@ else
     rf = lowpass(rf);
     rc = restrict(rf);
     ec = FMGV(rc, zeros(length(rc),1), 0, 0); 
-    ef = prolong(ec);
+    ef = prolong(ec, 0, 0);
     v = v - ef;
     rf = residual(f, v, bc0, bc1);
     v = v - gamma*rf/D; %*%*
