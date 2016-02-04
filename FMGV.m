@@ -9,7 +9,7 @@ if N <= 31
     bc = zeros(N, 1);
     bc(1) = bc0;
     bc(end) = bc1;
-    v = T\(f - bc);
+    v = T\(f - bc/dx2);
     return
 else
     gamma = 1/2;

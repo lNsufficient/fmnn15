@@ -1,15 +1,17 @@
 clear;
 
+g = @(x) pi^2*cos(pi*x);
+
 interval = 1;
 
-bc0 = 1;
-bc1 = -1;
+bc0 = -1;
+bc1 = 1;
 
 Ncoarse = 31;
 dx2 = 1/(Ncoarse+1)^2;
 x = linspace(0,interval,Ncoarse+2);
-x = x(2:end-1);
-f = pi^2*cos(pi*x)';
+x = x(2:end-1)';
+f = g(x);
 
 Nfine = 2^10 - 1;
 nbrProlongs = log2(Nfine + 1) - log2(Ncoarse + 1);
@@ -25,7 +27,6 @@ for i = 1:nbrProlongs
 end
 x = linspace(0,interval,Nfine+2)';
 x = x(2:end-1);
-f = pi^2*cos(pi*x);
+f = g(x);
 u = FMGV(f, v, bc0, bc1);
-plot([0; x; interval], [bc0; u; bc1]);
-
+plot([0 ; x; interval], [bc0; u; bc1]);
