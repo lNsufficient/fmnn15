@@ -18,16 +18,16 @@ if N <= 31
 else
     gammaC = 1/2;
     %T = [1 -2 1]/dx2; %*%*
-    rf = residual(f, v, beta);
+    rf = residual(f, v, gamma);
     D = gamma*4/dx2+1;
     v = v - gammaC*rf/D; %*%*
-    rf = residual(f, v, beta);
+    rf = residual(f, v, gamma);
     rf = lowpass(rf);
     rc = restrict(rf);
-    ec = FMGV(rc, zeros(length(rc),length(rc)), beta); 
+    ec = FMGV(rc, zeros(length(rc),length(rc)), gamma); 
     ef = prolong(ec);
     v = v - ef;
-    rf = residual(f, v, beta);
+    rf = residual(f, v, gamma);
     v = v - gammaC*rf/D; %*%*
     return
 end
