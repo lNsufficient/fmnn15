@@ -1,10 +1,7 @@
 function res = residual(f, v, gamma)
-%res = residual(f, v,beta)
+%res = residual(f, v, gamma)
 %   Computes the residual using conv for homogenous bc = 0;
 
-%Possible problems:
-%Minus sign
-%Beta
 N = length(v);
 dx2 = (1/(N+1))^2;
 %Since we are using homogenous bc = 0:

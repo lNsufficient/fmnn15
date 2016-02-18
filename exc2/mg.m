@@ -1,8 +1,8 @@
 clear;
 
-beta = 0;
-g = @(x, y) (pi^2*2-beta)*sin(pi*x)*sin(pi*y);
-f_corr = @(x, y) sin(pi*x)*sin(pi*y);
+beta = 1;
+g = @(x, y) (pi^2*10-beta)*sin(pi*x)*sin(3*pi*y);
+f_corr = @(x, y) sin(pi*x)*sin(3*pi*y);
 interval = 1;
 
 
@@ -17,7 +17,7 @@ for i = 1:Ncoarse
 end
 
 %surf(x, x, f)
-Nfine = 2^14 - 1;
+Nfine = 2^12 - 1;
 nbrProlongs = log2(Nfine + 1) - log2(Ncoarse + 1);
 v = zeros(Ncoarse,Ncoarse);
 v =FMGV(f, v, beta);
@@ -45,7 +45,7 @@ end
 r = max(max(abs(residual(f, v, beta))));
 
 u = v;
-nbrV = 10;
+nbrV = 20;
 for i = 1:nbrV
     u = FMGV(f, u, beta);
 end
